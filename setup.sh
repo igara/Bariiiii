@@ -1,1 +1,1 @@
-svn checkout https://zxingnet.svn.codeplex.com/svn/branches/NETMF/ Assets/ZXing
+svn checkout https://zxingnet.svn.codeplex.com/svn/trunk/Source/lib/ Assets/ZXing
