@@ -24,4 +24,4 @@ git clone --recursive https://github.com/igara/Bariiiii.git
 
 ## Using Lib（使用しているライブラリ）
 
-[ZXing.Net.Mobile](https://github.com/Redth/ZXing.Net.Mobile)  
+[ZXing](https://zxingnet.codeplex.com/)  
