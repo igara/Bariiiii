@@ -36,4 +36,11 @@ public class TitleScreenController : MonoBehaviour {
 	public void OnClickBarcordScanButton () {
 		SceneManager.LoadScene("BarcodeScanScreen/BarcodeScanScreenView");
 	}
+
+	/**
+	 * Sampleボタンを押下した時の処理
+	 */
+	public void OnClickBarcordSampleScanButton () {
+		SceneManager.LoadScene("iOSBarCodeExpert/Scenes/mainmenu/mainmenu");
+	}
 }
