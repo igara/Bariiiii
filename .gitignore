@@ -5,6 +5,8 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 /iOS/
+/MacOSX.app/
+/WebGL/
 /Assets/ZXing/
 /Assets/ZXing.meta
 
