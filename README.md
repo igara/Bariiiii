@@ -25,3 +25,5 @@ git clone --recursive https://github.com/igara/Bariiiii.git
 ## Using Lib（使用しているライブラリ）
 
 [ZXing](https://zxingnet.codeplex.com/)  
+[Vuforia](https://developer.vuforia.com/)  
+vuforia-unity-5-5-9.unitypackage
