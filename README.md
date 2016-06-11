@@ -19,8 +19,16 @@ OS Ver...
 ## Usage （使い方）
 
 ```
-git clone --recursive https://github.com/igara/Bariiiii.git
+
+git clone https://github.com/igara/Bariiiii.git
+
+cd Bariiiii
+sh setup.sh
+
 ```
+
+Open Unity This Project, Import VuforiaPackage.
+Unityでプロジェクトを開き、VuforiaPackageをImportしてください。
 
 ## Using Lib（使用しているライブラリ）
 
