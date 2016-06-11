@@ -34,7 +34,7 @@ public class TitleScreenController : MonoBehaviour {
 	 * Scanボタンを押下した時の処理
 	 */
 	public void OnClickBarcordScanButton () {
-		SceneManager.LoadScene("BarcodeScanScreen/BarcodeScanScreenView");
+		SceneManager.LoadScene("Screen/BarcodeScanScreen/BarcodeScanScreenView");
 	}
 
 	/**
