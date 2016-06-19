@@ -4,13 +4,13 @@ using System.Collections;
 
 using System.Threading;
 
-public class BarcodeScanController : MonoBehaviour {
+public class ARCameraComponent : MonoBehaviour {
 
 	/**
 	 * インスタンス生成された時のみ実行されるメソッド
 	 */
 	void Awake () {
-		
+
 	}
 
 	/**
@@ -18,7 +18,7 @@ public class BarcodeScanController : MonoBehaviour {
 	 * 最初のフレームのアップデート前に実行されるメソッド
 	 */
 	void Start () {
-    
+
 	}
 
 	/**

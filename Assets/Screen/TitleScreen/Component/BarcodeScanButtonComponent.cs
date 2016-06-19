@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class TitleScreenController : MonoBehaviour {
+using System.Threading;
+
+public class BarcodeScanButtonComponent : MonoBehaviour {
 
 	/**
 	 * インスタンス生成された時のみ実行されるメソッド
@@ -17,7 +20,7 @@ public class TitleScreenController : MonoBehaviour {
 	 */
 	void Start () {
 	}
-	
+
 	/**
 	 * フレーム毎に一度実行されるメソッド
 	 */
@@ -31,16 +34,9 @@ public class TitleScreenController : MonoBehaviour {
 	}
 
 	/**
-	 * Scanボタンを押下した時の処理
+	 * BarcodeScanボタンを押下した時の処理
 	 */
 	public void OnClickBarcordScanButton () {
 		SceneManager.LoadScene("Screen/BarcodeScanScreen/BarcodeScanScreenView");
-	}
-
-	/**
-	 * Sampleボタンを押下した時の処理
-	 */
-	public void OnClickBarcordSampleScanButton () {
-		SceneManager.LoadScene("iOSBarCodeExpert/Scenes/mainmenu/mainmenu");
 	}
 }
