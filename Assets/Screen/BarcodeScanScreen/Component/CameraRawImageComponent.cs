@@ -11,6 +11,7 @@ using ZXing.Common;
 
 public class CameraRawImageComponent : MonoBehaviour {
 
+
 	private BarcodeReader reader;
 	private Color32[] color;
 	private Result result;
@@ -19,19 +20,20 @@ public class CameraRawImageComponent : MonoBehaviour {
 	private int width = Screen.width;
 	private float timeleft;
 	private RawImage cameraRawImage;
+
 	/**
 	 * インスタンス生成された時のみ実行されるメソッド
 	 */
 	void Awake () {
-		
+		BarcodeScanIOS.barcordScanInit ();
 	}
-
+	#if !UNITY_IPHONE
 	/**
 	 * Awakeの後で
 	 * 最初のフレームのアップデート前に実行されるメソッド
 	 */
 	void Start () {
-		reader = new BarcodeReader {AutoRotate=false, TryHarder=false};
+		reader = new BarcodeReader ();
 		cameraRawImage = GameObject.Find ("CameraRawImage").GetComponent<RawImage> ();
 		webcamTexture = new WebCamTexture(height, width);
 		webcamTexture.Play();
@@ -46,14 +48,12 @@ public class CameraRawImageComponent : MonoBehaviour {
 	}
 
 	void readTextFronCode() {
-		#if UNITY_ANDSOID
 		color = webcamTexture.GetPixels32();
 		result = reader.Decode(color, width, height);
 		if (result.Text != null) {
 			
-			GameObject.Find ("oooooText").GetComponent<Text>().gameObject.SetActive(false);
+			GameObject.Find ("oooooText").GetComponent<Text> ().gameObject.SetActive (false);
 		}
-		#endif
 	}
 
 	/**
@@ -61,4 +61,5 @@ public class CameraRawImageComponent : MonoBehaviour {
 	 */
 	void OnGUI() {
 	}
+	#endif
 }
