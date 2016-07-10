@@ -52,7 +52,7 @@ public class CameraRawImageComponent : MonoBehaviour {
 		result = reader.Decode(color, width, height);
 		if (result.Text != null) {
 			
-			GameObject.Find ("oooooText").GetComponent<Text> ().gameObject.SetActive (false);
+//			GameObject.Find ("oooooText").GetComponent<Text> ().gameObject.SetActive (false);
 		}
 	}
 

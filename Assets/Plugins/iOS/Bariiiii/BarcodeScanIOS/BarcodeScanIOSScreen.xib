@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController wantsFullScreenLayout="YES" id="PNO-Ko-pY4" customClass="BarcodeScanIOS">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="7W2-gA-b66"/>
+                <viewControllerLayoutGuide type="bottom" id="uvt-2w-i3N"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="W5W-PN-Lar" userLabel="view">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8I6-MJ-lMl" userLabel="select">
+                        <rect key="frame" x="-12" y="441" width="344" height="39"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1b-Bi-Qfa">
+                                <rect key="frame" x="20" y="5" width="30" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Title"/>
+                                <connections>
+                                    <action selector="onTouchedBackButton:" destination="PNO-Ko-pY4" eventType="touchUpInside" id="sON-97-D1z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="39" id="pzg-MI-dk4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="8I6-MJ-lMl" secondAttribute="trailing" constant="-28" id="L8h-TT-KyX"/>
+                    <constraint firstItem="8I6-MJ-lMl" firstAttribute="leading" secondItem="W5W-PN-Lar" secondAttribute="leadingMargin" constant="-28" id="TbB-Ph-rZV"/>
+                    <constraint firstItem="uvt-2w-i3N" firstAttribute="top" secondItem="8I6-MJ-lMl" secondAttribute="bottom" id="uaM-e7-kbA"/>
+                </constraints>
+            </view>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backButton" destination="Z1b-Bi-Qfa" id="9EH-gN-m76"/>
+                <outlet property="selectView" destination="8I6-MJ-lMl" id="8RV-kl-eD2"/>
+            </connections>
+            <point key="canvasLocation" x="307" y="348"/>
+        </viewController>
+    </objects>
+</document>

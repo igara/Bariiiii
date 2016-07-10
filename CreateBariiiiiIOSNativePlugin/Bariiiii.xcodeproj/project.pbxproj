@@ -17,6 +17,7 @@
 		40DB14131D2829950017759A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40DB14111D2829950017759A /* Main.storyboard */; };
 		40DB14151D2829950017759A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40DB14141D2829950017759A /* Assets.xcassets */; };
 		40DB14181D2829950017759A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40DB14161D2829950017759A /* LaunchScreen.storyboard */; };
+		40EDD6C91D3246CA00FACD3D /* BarcodeScanIOSScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EDD6C81D3246CA00FACD3D /* BarcodeScanIOSScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		40DB14141D2829950017759A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40DB14171D2829950017759A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40DB14191D2829950017759A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40EDD6C81D3246CA00FACD3D /* BarcodeScanIOSScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarcodeScanIOSScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 				40BE47D41D284FDE00638360 /* BarcodeScanIOS.cs */,
 				40BE47D51D284FDE00638360 /* BarcodeScanIOS.cs.meta */,
 				40BE47D61D284FDE00638360 /* BarcodeScanIOS.mm */,
+				40EDD6C81D3246CA00FACD3D /* BarcodeScanIOSScreen.xib */,
 				40BE47D71D284FDE00638360 /* BarcodeScanIOS.mm.meta */,
 			);
 			name = BarcodeScanIOS;
@@ -163,6 +166,7 @@
 				40BE47DA1D284FDE00638360 /* BarcodeScanIOS.cs in Resources */,
 				40BE47DB1D284FDE00638360 /* BarcodeScanIOS.cs.meta in Resources */,
 				40DB14151D2829950017759A /* Assets.xcassets in Resources */,
+				40EDD6C91D3246CA00FACD3D /* BarcodeScanIOSScreen.xib in Resources */,
 				40DB14131D2829950017759A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
