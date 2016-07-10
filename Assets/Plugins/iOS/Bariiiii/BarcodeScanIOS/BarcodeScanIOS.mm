@@ -152,6 +152,7 @@ CGFloat height;
  * MARK:back buttonを押下した時
  */
 - (IBAction)onTouchedBackButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
@@ -164,7 +165,6 @@ CGFloat height;
 extern UIViewController *UnityGetGLViewController();
 
 extern "C" {
-
     void barcordScanInit_();
 }
 

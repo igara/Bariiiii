@@ -8,9 +8,11 @@ using System.Threading;
 using ZXing;
 using ZXing.QrCode;
 using ZXing.Common;
+using Service.ScreenAutorotateSetting;
 
 public class CameraRawImageComponent : MonoBehaviour {
 
+	private ScreenAutorotateSetting screenAutorotateSetting = new ScreenAutorotateSetting();
 
 	private BarcodeReader reader;
 	private Color32[] color;
@@ -62,4 +64,22 @@ public class CameraRawImageComponent : MonoBehaviour {
 	void OnGUI() {
 	}
 	#endif
+
+	/**
+	 * Behaviour が有効/アクティブになったときに呼び出される 
+	 */
+	void OnEnable() {
+		// 画面の回転を許可しない
+		screenAutorotateSetting.setAutorotateSwichFalse();
+		// immersiveモードを解除
+		Screen.fullScreen = false;
+	}
+
+	/**
+	 * Behaviour が無効/非アクティブになったときに呼び出される 
+	 */
+	void OnDisable() {
+		// 画面の回転を許可する
+		screenAutorotateSetting.setAutorotateSwichTrue();
+	}
 }

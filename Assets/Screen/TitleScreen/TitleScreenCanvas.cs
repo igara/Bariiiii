@@ -38,6 +38,8 @@ public class TitleScreenCanvas : MonoBehaviour {
 	void OnEnable() {
 		// 画面の回転を許可しない
 		screenAutorotateSetting.setAutorotateSwichFalse();
+		// immersiveモードを解除
+		Screen.fullScreen = false;
 	}
 
 	/**

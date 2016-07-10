@@ -1,7 +1,11 @@
 using UnityEngine;
 using System.Runtime.InteropServices;
 
+/**
+ * C#からiOSのネイティブコードを呼び出す
+ */
 public class BarcodeScanIOS {
+
     [DllImport("__Internal")]
 	private static extern void barcordScanInit_ ();
 
