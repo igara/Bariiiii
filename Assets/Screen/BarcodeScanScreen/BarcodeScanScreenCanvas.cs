@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Service.ScreenAutorotateSetting;
+using UnityEngine.SceneManagement;
 
 public class BarcodeScanScreenCanvas : MonoBehaviour {
 	
@@ -46,5 +47,9 @@ public class BarcodeScanScreenCanvas : MonoBehaviour {
 	void OnDisable() {
 		// 画面の回転を許可する
 		screenAutorotateSetting.setAutorotateSwichTrue();
+	}
+
+	public void moveBackPage(string str) {
+		SceneManager.LoadScene ("TitleScreenView");
 	}
 }

@@ -125,7 +125,7 @@ CGFloat height;
             // ISBNかどうかをチェック
             if (prefix == 978 || prefix == 979) {
                 long long isbn9 = (value % 10000000000) / 10;
-//                UnitySendMessage("GameObjectName", "MethodName", "message");
+                    //UnitySendMessage("BarcodeScanScreenCanvas", "meveBackPage", "");
 
             }
 
@@ -153,6 +153,7 @@ CGFloat height;
  */
 - (IBAction)onTouchedBackButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+    UnitySendMessage("BarcodeScanScreenCanvas", "moveBackPage", "");
 }
 
 @end
