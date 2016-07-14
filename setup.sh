@@ -1,1 +1,1 @@
-svn checkout https://zxingnet.svn.codeplex.com/svn/trunk/Clients/UnityDemo/Assets/ Assets/ZXing
+dotnet restore --packages ./Assets/Plugins/Nuget
