@@ -13,10 +13,16 @@ The App is creating by Unity, so Multi PlatForm!
 (そうなるつもり)  
 
 Target ターゲット  
-📱 iOS and Android.  
+:iphone: iOS and Android.  
 OS Ver...  
 
 ## Usage （使い方）
+
+You have to install .NET Core & Unity, before cloned this Bariiiii Project.  
+このプロジェクトをCloneする前に、.NET CoreとUnityの環境をインストールしなくてはいけません。
+
+[.NET Core](https://www.microsoft.com/net/core)  
+[Unity](https://unity3d.com/jp/get-unity/download)
 
 ```
 
@@ -27,11 +33,14 @@ sh setup.sh
 
 ```
 
-Open Unity This Project, Import VuforiaPackage.
+Open Unity This Project, Import VuforiaPackage.  
 Unityでプロジェクトを開き、VuforiaPackageをImportしてください。
 
 ## Using Lib（使用しているライブラリ）
 
-[ZXing](https://zxingnet.codeplex.com/)  
-[Vuforia](https://developer.vuforia.com/)  
+- [Vuforia](https://developer.vuforia.com/)  
 vuforia-unity-5-5-9.unitypackage
+
+- Nuget  
+[Google.Apis.Sheets.v4 Client Library](https://www.nuget.org/packages/Google.Apis.Sheets.v4/)  
+[ZXing.Net](https://www.nuget.org/packages/ZXing.Net/)  
