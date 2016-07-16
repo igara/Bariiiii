@@ -4,8 +4,7 @@
     "emitEntryPoint": true
   },
   "dependencies": {
-    "Google.Apis.Sheets.v4": "1.14.0.539",
-    "ZXing.Net": "0.14.0.1"
+    "Google.Apis.Sheets.v4": "1.14.0.539"
   },
   "frameworks": {
     "netcoreapp1.0": {
