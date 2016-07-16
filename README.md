@@ -39,7 +39,8 @@ Unityでプロジェクトを開き、VuforiaPackageをImportしてください�
 ## Using Lib（使用しているライブラリ）
 
 - [Vuforia](https://developer.vuforia.com/)  
-vuforia-unity-5-5-9.unitypackage
+vuforia-unity-5-5-9.unitypackage  
+[Vuforia Download Page](https://developer.vuforia.com/downloads/sdk)
 
 - Nuget  
 [Google.Apis.Sheets.v4 Client Library](https://www.nuget.org/packages/Google.Apis.Sheets.v4/)  
