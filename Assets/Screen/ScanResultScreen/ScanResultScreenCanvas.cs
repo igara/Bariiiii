@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
 using System.Xml;
+using System;
+using System.Text.RegularExpressions;
 
 public class ScanResultScreenCanvas : MonoBehaviour {
 	private XmlDocument xmlDoc;
-	private XmlNodeList nodeListtext;
+	private XmlNodeList xmlNodeList;
 
 	private ScreenAutorotateSetting screenAutorotateSetting = new ScreenAutorotateSetting();
 
@@ -18,7 +20,12 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 	void Awake () {
 		GameObject.Find ("ISBNText").GetComponent<Text> ().enabled = false;
 		GameObject.Find ("ISBNResultText").GetComponent<Text> ().enabled = false;
-
+		GameObject.Find ("BookText").GetComponent<Text> ().enabled = false;
+		GameObject.Find ("BookNameText").GetComponent<Text> ().enabled = false;
+		GameObject.Find ("PublisherText").GetComponent<Text> ().enabled = false;
+		GameObject.Find ("PublisherNameText").GetComponent<Text> ().enabled = false;
+		GameObject.Find ("CreatorText").GetComponent<Text> ().enabled = false;
+		GameObject.Find ("CreatorNameText").GetComponent<Text> ().enabled = false;
 	}
 
 	/**
@@ -26,7 +33,7 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 	 * 最初のフレームのアップデート前に実行されるメソッド
 	 */
 	void Start () {
-		resultPage (BarcodeScanScreenCanvas.isbnCode);
+		StartCoroutine (resultPage (BarcodeScanScreenCanvas.isbnCode));
 	}
 
 	/**
@@ -65,34 +72,68 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		GameObject.Find ("ISBNText").GetComponent<Text> ().enabled = true;
 		GameObject.Find ("ISBNResultText").GetComponent<Text> ().enabled = true;
 		GameObject.Find ("ISBNResultText").GetComponent<Text> ().text = str;
-		string baseUrl = "http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=isbn=";
+
+		string baseUrl = "http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=isbn=" + str;
 		string url = baseUrl + str;
-		WWW www = new WWW(url);
+		var www = new WWW(url);
 		yield return www;
-		if(www.error != null) {
-			Debug.Log("Error!");
-		} else {
-			Debug.Log("Success");
-			xmlDoc = new XmlDocument();
-			xmlDoc.LoadXml(www.text);
 
-			// 目的のノードだけを取り出す
-			nodeListtext = xmlDoc.GetElementsByTagName("version");
-			foreach(XmlNode levelInfo in nodeListtext){
-				Debug.Log(levelInfo.Name.ToString());
-				XmlNodeList levelcontent = levelInfo.ChildNodes;
-				foreach(XmlNode levelsItens in levelcontent){
-					foreach(XmlNode word in levelsItens){
-						print (baseUrl);
-						print (nodeListtext);
-						if(word.Name == "surface")
-						{
-							Debug.Log(word.InnerText.ToString());
-						}
-					}
+		xmlDoc = new XmlDocument();
+		xmlDoc.LoadXml (DecodeHtmlChars(www.text));
 
-				}
-			}
-		}
+		// 全部配列
+		xmlNodeList = xmlDoc.GetElementsByTagName("records");
+
+		Regex titleRegex = new Regex(@"<dc:title>.*</dc:title>");
+		MatchCollection titleMC = titleRegex.Matches(
+			DecodeHtmlChars(xmlNodeList[0].InnerText)
+		);
+		string bookName = titleMC [0].Value;
+		bookName = bookName.Replace("<dc:title>", "");
+		bookName = bookName.Replace("&amp;", " ");
+		bookName = bookName.Replace("</dc:title>", "");
+		GameObject.Find ("BookText").GetComponent<Text> ().enabled = true;
+		GameObject.Find ("BookNameText").GetComponent<Text> ().enabled = true;
+		GameObject.Find ("BookNameText").GetComponent<Text> ().text = bookName;
+
+		Regex publisherRegex = new Regex(@"<dc:publisher>.*</dc:publisher>");
+		MatchCollection publisherMC = publisherRegex.Matches(
+			DecodeHtmlChars(xmlNodeList[0].InnerText)
+		);
+		string publisherName = publisherMC [0].Value;
+		publisherName = publisherName.Replace("<dc:publisher>", "");
+		publisherName = publisherName.Replace("&amp;", " ");
+		publisherName = publisherName.Replace("</dc:publisher>", "");
+		GameObject.Find ("PublisherText").GetComponent<Text> ().enabled = true;
+		GameObject.Find ("PublisherNameText").GetComponent<Text> ().enabled = true;
+		GameObject.Find ("PublisherNameText").GetComponent<Text> ().text = publisherName;
+
+		Regex creatorRegex = new Regex(@"<dc:creator>.*</dc:creator>");
+		MatchCollection creatorMC = creatorRegex.Matches(
+			DecodeHtmlChars(xmlNodeList[0].InnerText)
+		);
+		string creatorName = creatorMC [0].Value;
+		creatorName = creatorName.Replace("<dc:creator>", "");
+		creatorName = creatorName.Replace("&amp;", " ");
+		creatorName = creatorName.Replace("</dc:creator>", "");
+		GameObject.Find ("CreatorText").GetComponent<Text> ().enabled = true;
+		GameObject.Find ("CreatorNameText").GetComponent<Text> ().enabled = true;
+		GameObject.Find ("CreatorNameText").GetComponent<Text> ().text = creatorName;
 	}
+
+	string DecodeHtmlChars(string aText) {
+		string[] parts = aText.Split(new string[]{"&#x"}, StringSplitOptions.None);
+		for (int i = 1; i < parts.Length; i++)
+		{
+			int n = parts[i].IndexOf(';');
+			string number = parts[i].Substring(0,n);
+			try
+			{
+				int unicode = Convert.ToInt32(number,16);
+				parts[i] = ((char)unicode) + parts[i].Substring(n+1);
+			} catch {}
+		}
+		return String.Join("",parts);
+	}
+
 }
