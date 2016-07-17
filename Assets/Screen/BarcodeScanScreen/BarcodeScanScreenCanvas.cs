@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BarcodeScanScreenCanvas : MonoBehaviour {
 	
 	private ScreenAutorotateSetting screenAutorotateSetting = new ScreenAutorotateSetting();
-
+	public static string isbnCode;
 	/**
 	 * インスタンス生成された時のみ実行されるメソッド
 	 */
@@ -51,5 +51,10 @@ public class BarcodeScanScreenCanvas : MonoBehaviour {
 
 	public void moveBackPage(string str) {
 		SceneManager.LoadScene ("TitleScreenView");
+	}
+
+	public void resultPage(string str) {
+		isbnCode = str;
+		SceneManager.LoadScene ("Screen/ScanResultScreen/ScanResultScreenView");
 	}
 }

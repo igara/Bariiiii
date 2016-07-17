@@ -10,7 +10,6 @@
 
 @property (strong, nonatomic) AVCaptureSession *captureSession;
 @property (strong, nonatomic) AVCaptureDevice *cameraDevices;
-@property (strong, nonatomic) AVCaptureStillImageOutput *imageOutput;
 @property (strong, nonatomic) IBOutlet UIView *selectView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 
@@ -66,11 +65,13 @@ CGFloat height;
     // セッションに追加
     [_captureSession addInput:videoInput];
 
-    // 出力先を生成
-    _imageOutput = [[AVCaptureStillImageOutput alloc]init];
+    // metadata取得に必要な初期設定
+    AVCaptureMetadataOutput *metaOutput = [[AVCaptureMetadataOutput alloc]init];
+    [metaOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+    [_captureSession addOutput:metaOutput];
 
-    // セッションに追加
-    [_captureSession addOutput:_imageOutput];
+    // どのmetadataを取得するか設定する
+    metaOutput.metadataObjectTypes = metaOutput.availableMetadataObjectTypes;
 
     // 画像を表示するレイヤーを生成
     AVCaptureVideoPreviewLayer *captureVideoLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:_captureSession];
@@ -79,17 +80,6 @@ CGFloat height;
 
     // Viewに追加
     [self.view.layer addSublayer:captureVideoLayer];
-
-    // metadata取得に必要な初期設定
-    AVCaptureMetadataOutput *metaOutput = [[AVCaptureMetadataOutput alloc]init];
-    [metaOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-    [_captureSession addOutput:metaOutput];
-
-    // どのmetadataを取得するか設定する
-    [metaOutput setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code]];
-
-    // どの範囲を解析するか設定する
-    metaOutput.rectOfInterest = CGRectMake(y, 1 - x - width, height, width);
 
     // セッション開始
     [_captureSession startRunning];
@@ -125,8 +115,22 @@ CGFloat height;
             // ISBNかどうかをチェック
             if (prefix == 978 || prefix == 979) {
                 long long isbn9 = (value % 10000000000) / 10;
-                    //UnitySendMessage("BarcodeScanScreenCanvas", "meveBackPage", "");
+                long long sum = 0, tmp_isbn = isbn9;
+                for (int i=10; i>0 && tmp_isbn>0; i--) {
+                    long long divisor = pow(10, i-2);
+                    sum += (tmp_isbn / divisor) * i;
+                    tmp_isbn %= divisor;
+                }
+                long long checkdigit = 11 - (sum % 11);
 
+                    // isbn10コードに変換
+                NSString *isbn10 =
+                [NSString stringWithFormat:@"%lld%@",
+                 isbn9,
+                 (checkdigit == 10)?
+                 @"X":[NSString stringWithFormat:@"%lld", checkdigit%11]];
+                [self dismissViewControllerAnimated:YES completion:nil];
+                UnitySendMessage("BarcodeScanScreenCanvas", "resultPage", (char *)[isbn10 UTF8String]);
             }
 
         } else if ([data.type isEqualToString:AVMetadataObjectTypeEAN8Code]) {
