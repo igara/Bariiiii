@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 public class ScanResultScreenCanvas : MonoBehaviour {
 	private XmlDocument xmlDoc;
 	private XmlNodeList xmlNodeList;
+	private string isbn;
 
 	private ScreenAutorotateSetting screenAutorotateSetting = new ScreenAutorotateSetting();
 
@@ -26,6 +27,9 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		GameObject.Find ("PublisherNameText").GetComponent<Text> ().enabled = false;
 		GameObject.Find ("CreatorText").GetComponent<Text> ().enabled = false;
 		GameObject.Find ("CreatorNameText").GetComponent<Text> ().enabled = false;
+		GameObject.Find ("BookRawImage").GetComponent<RawImage> ().enabled = false;
+		GameObject.Find ("AmazonLinkButton").GetComponent<Button> ().enabled = false;
+		GameObject.Find ("AmazonLinkText").GetComponent<Text> ().enabled = false;
 	}
 
 	/**
@@ -69,17 +73,18 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 	}
 
 	public IEnumerator resultPage(string str) {
+		isbn = str;
 		GameObject.Find ("ISBNText").GetComponent<Text> ().enabled = true;
 		GameObject.Find ("ISBNResultText").GetComponent<Text> ().enabled = true;
-		GameObject.Find ("ISBNResultText").GetComponent<Text> ().text = str;
+		GameObject.Find ("ISBNResultText").GetComponent<Text> ().text = isbn;
 
-		string baseUrl = "http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=isbn=" + str;
-		string url = baseUrl + str;
-		var www = new WWW(url);
-		yield return www;
+		string bookSearchUrl = "http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=isbn=";
+		bookSearchUrl = bookSearchUrl + isbn;
+		var bookSearchWWW = new WWW(bookSearchUrl);
+		yield return bookSearchWWW;
 
 		xmlDoc = new XmlDocument();
-		xmlDoc.LoadXml (DecodeHtmlChars(www.text));
+		xmlDoc.LoadXml (DecodeHtmlChars(bookSearchWWW.text));
 
 		// 全部配列
 		xmlNodeList = xmlDoc.GetElementsByTagName("records");
@@ -119,6 +124,16 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		GameObject.Find ("CreatorText").GetComponent<Text> ().enabled = true;
 		GameObject.Find ("CreatorNameText").GetComponent<Text> ().enabled = true;
 		GameObject.Find ("CreatorNameText").GetComponent<Text> ().text = creatorName;
+
+		string bookImageUrl = "http://images-jp.amazon.com/images/P/" + isbn + ".09.MZZZZZZZ.jpg";
+		var bookImageWWW = new WWW(bookImageUrl);
+		yield return bookImageWWW;
+
+		GameObject.Find ("BookRawImage").GetComponent<RawImage> ().enabled = true;
+		GameObject.Find ("BookRawImage").GetComponent<RawImage> ().texture = bookImageWWW.textureNonReadable;
+
+		GameObject.Find ("AmazonLinkButton").GetComponent<Button> ().enabled = true;
+		GameObject.Find ("AmazonLinkText").GetComponent<Text> ().enabled = true;
 	}
 
 	string DecodeHtmlChars(string aText) {
@@ -136,4 +151,7 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		return String.Join("",parts);
 	}
 
+	public void OnClickAmazonLinkButton () {
+		Application.OpenURL ("https://www.amazon.co.jp/gp/aw/d/" + isbn);
+	}
 }
