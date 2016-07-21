@@ -154,4 +154,8 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 	public void OnClickAmazonLinkButton () {
 		Application.OpenURL ("https://www.amazon.co.jp/gp/aw/d/" + isbn);
 	}
+
+	public void OnClickBackButton () {
+		SceneManager.LoadScene ("TitleScreenView");
+	}
 }
