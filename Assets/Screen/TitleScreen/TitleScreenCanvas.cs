@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Service.ScreenAutorotateSetting;
+using UnityEngine.SceneManagement;
 
 public class TitleScreenCanvas : MonoBehaviour {
 
@@ -48,5 +49,26 @@ public class TitleScreenCanvas : MonoBehaviour {
 	void OnDisable() {
 		// 画面の回転を許可する
 		screenAutorotateSetting.setAutorotateSwichTrue();
+	}
+
+	/**
+	 * ARScanボタンを押下した時の処理
+	 */
+	public void OnClickARScanButton () {
+		SceneManager.LoadScene("Screen/ARScanScreen/ARScanScreenView");
+	}
+
+	/**
+	 * BarcodeScanボタンを押下した時の処理
+	 */
+	public void OnClickBarcordScanButton () {
+		SceneManager.LoadScene("Screen/BarcodeScanScreen/BarcodeScanScreenView");
+	}
+
+	/**
+	 * Loginボタンを押下した時の処理
+	 */
+	public void OnClickGoogleLoginButton () {
+		SceneManager.LoadScene("Screen/GoogleLoginScreen/GoogleLoginScreenView");
 	}
 }
