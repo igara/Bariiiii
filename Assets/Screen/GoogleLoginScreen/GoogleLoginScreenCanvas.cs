@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Service.ScreenAutorotateSetting;
 
 public class GoogleLoginScreenCanvas : MonoBehaviour {
 

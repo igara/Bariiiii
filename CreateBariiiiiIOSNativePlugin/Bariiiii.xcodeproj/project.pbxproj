@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4032259E1D4A44C200E1685E /* GoogleLoginWebViewIOS.cs in Resources */ = {isa = PBXBuildFile; fileRef = 4032259D1D4A44C200E1685E /* GoogleLoginWebViewIOS.cs */; };
+		403225A01D4A453E00E1685E /* GoogleLoginWebViewIOSScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4032259F1D4A453E00E1685E /* GoogleLoginWebViewIOSScreen.xib */; };
+		403225A31D4B9ED400E1685E /* GoogleLoginWebViewIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 403225A21D4B9ED400E1685E /* GoogleLoginWebViewIOS.mm */; };
 		40BE47DA1D284FDE00638360 /* BarcodeScanIOS.cs in Resources */ = {isa = PBXBuildFile; fileRef = 40BE47D41D284FDE00638360 /* BarcodeScanIOS.cs */; };
 		40BE47DB1D284FDE00638360 /* BarcodeScanIOS.cs.meta in Resources */ = {isa = PBXBuildFile; fileRef = 40BE47D51D284FDE00638360 /* BarcodeScanIOS.cs.meta */; };
 		40BE47DC1D284FDE00638360 /* BarcodeScanIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40BE47D61D284FDE00638360 /* BarcodeScanIOS.mm */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4032259D1D4A44C200E1685E /* GoogleLoginWebViewIOS.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GoogleLoginWebViewIOS.cs; sourceTree = "<group>"; };
+		4032259F1D4A453E00E1685E /* GoogleLoginWebViewIOSScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleLoginWebViewIOSScreen.xib; sourceTree = "<group>"; };
+		403225A21D4B9ED400E1685E /* GoogleLoginWebViewIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoogleLoginWebViewIOS.mm; sourceTree = "<group>"; };
 		40BE47D41D284FDE00638360 /* BarcodeScanIOS.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarcodeScanIOS.cs; sourceTree = "<group>"; };
 		40BE47D51D284FDE00638360 /* BarcodeScanIOS.cs.meta */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarcodeScanIOS.cs.meta; sourceTree = "<group>"; };
 		40BE47D61D284FDE00638360 /* BarcodeScanIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BarcodeScanIOS.mm; sourceTree = "<group>"; };
@@ -49,6 +55,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4032259C1D4A44C200E1685E /* WebViewIOS */ = {
+			isa = PBXGroup;
+			children = (
+				4032259D1D4A44C200E1685E /* GoogleLoginWebViewIOS.cs */,
+				4032259F1D4A453E00E1685E /* GoogleLoginWebViewIOSScreen.xib */,
+				403225A21D4B9ED400E1685E /* GoogleLoginWebViewIOS.mm */,
+			);
+			name = WebViewIOS;
+			path = ../Assets/Plugins/iOS/Bariiiii/WebViewIOS;
+			sourceTree = "<group>";
+		};
 		40BE47D31D284FDE00638360 /* BarcodeScanIOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				40BE47D31D284FDE00638360 /* BarcodeScanIOS */,
+				4032259C1D4A44C200E1685E /* WebViewIOS */,
 				40DB14071D2829950017759A /* CreateBariiiiiIOSNativePlugin */,
 				40DB14061D2829950017759A /* Products */,
 			);
@@ -162,11 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				40DB14181D2829950017759A /* LaunchScreen.storyboard in Resources */,
+				403225A01D4A453E00E1685E /* GoogleLoginWebViewIOSScreen.xib in Resources */,
 				40BE47DD1D284FDE00638360 /* BarcodeScanIOS.mm.meta in Resources */,
 				40BE47DA1D284FDE00638360 /* BarcodeScanIOS.cs in Resources */,
 				40BE47DB1D284FDE00638360 /* BarcodeScanIOS.cs.meta in Resources */,
 				40DB14151D2829950017759A /* Assets.xcassets in Resources */,
 				40EDD6C91D3246CA00FACD3D /* BarcodeScanIOSScreen.xib in Resources */,
+				4032259E1D4A44C200E1685E /* GoogleLoginWebViewIOS.cs in Resources */,
 				40DB14131D2829950017759A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +201,7 @@
 				40DB14101D2829950017759A /* ViewController.m in Sources */,
 				40BE47DC1D284FDE00638360 /* BarcodeScanIOS.mm in Sources */,
 				40DB140D1D2829950017759A /* AppDelegate.m in Sources */,
+				403225A31D4B9ED400E1685E /* GoogleLoginWebViewIOS.mm in Sources */,
 				40DB140A1D2829950017759A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
