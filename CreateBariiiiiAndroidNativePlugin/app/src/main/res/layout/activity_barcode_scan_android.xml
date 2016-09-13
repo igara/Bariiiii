@@ -7,10 +7,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="work.syonet.createbariiiiiandroidnativeplugin.createbariiiiiandroidnativeplugin.BarcodeScanAndroidActivity"
+    tools:context="work.syonet.bariiiii.BarcodeScanAndroidActivity"
     android:transitionGroup="true">
     <fragment
-        android:name="work.syonet.createbariiiiiandroidnativeplugin.createbariiiiiandroidnativeplugin.BarcodeCameraFragment"
+        android:name="work.syonet.bariiiii.BarcodeCameraFragment"
         android:id="@+id/fragment1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

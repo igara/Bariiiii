@@ -1,4 +1,4 @@
-package work.syonet.createbariiiiiandroidnativeplugin.createbariiiiiandroidnativeplugin
+package work.syonet.bariiiii
 
 import android.content.Context
 import android.os.Bundle
