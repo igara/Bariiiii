@@ -1,12 +1,12 @@
 package work.syonet.bariiiii
 
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
 
 /**
  * バーコードを読み込む画面
  */
-class BarcodeScanAndroidActivity : AppCompatActivity() {
+class BarcodeScanAndroidActivity : Activity() {
 
     /**
      * ライフサイクルメソッド

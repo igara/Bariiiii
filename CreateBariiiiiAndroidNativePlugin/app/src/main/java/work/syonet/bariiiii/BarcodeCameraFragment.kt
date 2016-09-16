@@ -1,8 +1,8 @@
 package work.syonet.bariiiii
 
+import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.Toast
 import com.google.android.gms.vision.CameraSource
@@ -57,7 +57,7 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_barcode_camera, container, false)
+        return inflater?.inflate(R.layout.fragment_barcode_camera, container, false)
     }
 
     /**
@@ -68,8 +68,6 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
      */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initialize()
-        surfaceview.holder.addCallback(this)
     }
 
     /**
@@ -79,6 +77,8 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
      */
     override fun onStart() {
         super.onStart()
+        initialize()
+        surfaceview.holder.addCallback(this)
     }
 
     /**
@@ -99,12 +99,14 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
      */
     private fun initialize() {
         // デコードする画像フォーマットをセット
-        var barcodeDetector = BarcodeDetector.Builder(this.context).setBarcodeFormats(Barcode.EAN_13).build()
+        var barcodeDetector = BarcodeDetector.Builder(activity.baseContext)
+                .setBarcodeFormats(Barcode.EAN_13)
+                .build()
 
         var barcodeProcessorFactory = BarcodeProcessorFactory()
         barcodeDetector.setProcessor(MultiProcessor.Builder(barcodeProcessorFactory).build())
 
-        var cameraSourceBuilder = CameraSource.Builder(this.context, barcodeDetector)
+        var cameraSourceBuilder = CameraSource.Builder(activity.baseContext, barcodeDetector)
         cameraSourceBuilder.setFacing(CameraSource.CAMERA_FACING_BACK).setRequestedFps(10f).setAutoFocusEnabled(true)
         mCameraSource = cameraSourceBuilder.build()
     }

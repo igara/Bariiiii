@@ -27,35 +27,51 @@ public class CameraRawImageComponent : MonoBehaviour {
 	 * インスタンス生成された時のみ実行されるメソッド
 	 */
 	void Awake () {
+		#if UNITY_IPHONE
 		BarcodeScanIOS.barcordScanInit ();
+		#endif
+		#if UNITY_ANDROID
+
+		AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"); 
+		AndroidJavaObject currentUnityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"); 
+
+		AndroidJavaClass plugin = new AndroidJavaClass("work.syonet.bariiiii.ActivityLauncher"); 
+		plugin.CallStatic("launchActivity", "work.syonet.bariiiii.BarcodeScanAndroidActivity", currentUnityActivity );
+		#endif
 	}
-	#if !UNITY_IPHONE
+
 	/**
 	 * Awakeの後で
 	 * 最初のフレームのアップデート前に実行されるメソッド
 	 */
 	void Start () {
+		#if UNITY_EDITOR
 		reader = new BarcodeReader ();
 		cameraRawImage = GameObject.Find ("CameraRawImage").GetComponent<RawImage> ();
 		webcamTexture = new WebCamTexture(height, width);
 		webcamTexture.Play();
+		#endif
 	}
 
 	/**
 	 * フレーム毎に一度実行されるメソッド
 	 */
 	void Update () {
+		#if UNITY_EDITOR
 		cameraRawImage.texture = webcamTexture;
 		readTextFronCode ();
+		#endif
 	}
 
 	void readTextFronCode() {
+		#if UNITY_EDITOR
 		color = webcamTexture.GetPixels32();
 		result = reader.Decode(color, width, height);
 		if (result.Text != null) {
 			
 //			GameObject.Find ("oooooText").GetComponent<Text> ().gameObject.SetActive (false);
 		}
+		#endif
 	}
 
 	/**
@@ -63,7 +79,6 @@ public class CameraRawImageComponent : MonoBehaviour {
 	 */
 	void OnGUI() {
 	}
-	#endif
 
 	/**
 	 * Behaviour が有効/アクティブになったときに呼び出される 
