@@ -68,10 +68,18 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		screenAutorotateSetting.setAutorotateSwichTrue();
 	}
 
+	/**
+	 * ネイティブコードからきた時の戻る処理
+	 * @param string str
+	 */
 	public void moveBackPage(string str) {
 		SceneManager.LoadScene ("TitleScreenView");
 	}
 
+	/**
+	 * バーコードを読み取った時の処理
+	 * @param string str バーコード文字列
+	 */
 	public IEnumerator resultPage(string str) {
 		isbn = str;
 		GameObject.Find ("ISBNText").GetComponent<Text> ().enabled = true;
@@ -88,10 +96,11 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 
 		// 全部配列
 		xmlNodeList = xmlDoc.GetElementsByTagName("records");
+		string decodeHtmlChar = DecodeHtmlChars (xmlNodeList [0].InnerText);
 
 		Regex titleRegex = new Regex(@"<dc:title>.*</dc:title>");
 		MatchCollection titleMC = titleRegex.Matches(
-			DecodeHtmlChars(xmlNodeList[0].InnerText)
+			decodeHtmlChar
 		);
 		string bookName = titleMC [0].Value;
 		bookName = bookName.Replace("<dc:title>", "");
@@ -103,7 +112,7 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 
 		Regex publisherRegex = new Regex(@"<dc:publisher>.*</dc:publisher>");
 		MatchCollection publisherMC = publisherRegex.Matches(
-			DecodeHtmlChars(xmlNodeList[0].InnerText)
+			decodeHtmlChar
 		);
 		string publisherName = publisherMC [0].Value;
 		publisherName = publisherName.Replace("<dc:publisher>", "");
@@ -115,7 +124,7 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 
 		Regex creatorRegex = new Regex(@"<dc:creator>.*</dc:creator>");
 		MatchCollection creatorMC = creatorRegex.Matches(
-			DecodeHtmlChars(xmlNodeList[0].InnerText)
+			decodeHtmlChar
 		);
 		string creatorName = creatorMC [0].Value;
 		creatorName = creatorName.Replace("<dc:creator>", "");
@@ -136,6 +145,11 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		GameObject.Find ("AmazonLinkText").GetComponent<Text> ().enabled = true;
 	}
 
+	/**
+	 * 取得したHTMLのデコードを行う
+	 * @param string aText HTML
+	 * @return string デコード済み文字列
+	 */
 	string DecodeHtmlChars(string aText) {
 		string[] parts = aText.Split(new string[]{"&#x"}, StringSplitOptions.None);
 		for (int i = 1; i < parts.Length; i++)
@@ -151,11 +165,19 @@ public class ScanResultScreenCanvas : MonoBehaviour {
 		return String.Join("",parts);
 	}
 
+	/**
+	 * Amazonボタンを押下した時の処理
+	 */
 	public void OnClickAmazonLinkButton () {
+		// Amazonリンクを開く
 		Application.OpenURL ("https://www.amazon.co.jp/gp/aw/d/" + isbn);
 	}
 
+	/**
+	 * 戻るボタンを押下した時
+	 */
 	public void OnClickBackButton () {
+		// タイトル画面に遷移する
 		SceneManager.LoadScene ("TitleScreenView");
 	}
 }

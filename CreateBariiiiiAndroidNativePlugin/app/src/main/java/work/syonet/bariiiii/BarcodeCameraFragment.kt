@@ -4,15 +4,14 @@ import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.MultiProcessor
 import com.google.android.gms.vision.Tracker
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
+import com.unity3d.player.UnityPlayer
 import java.io.IOException
 import kotlinx.android.synthetic.main.fragment_barcode_camera.*
-
 
 /**
  * カメラの映像を表示するFragment
@@ -88,10 +87,6 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
      */
     override fun onDestroy() {
         super.onDestroy()
-        mCameraSource!!.stop()
-        mCameraSource!!.release()
-
-        surfaceview.holder.removeCallback(this)
     }
 
     /**
@@ -118,12 +113,13 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
      */
     override fun surfaceCreated(holder: SurfaceHolder) {
         try {
-            // カメラの映像を表示
-            mCameraSource!!.start(surfaceview.holder)
+            if (!holder.equals(null)) {
+                // カメラの映像を表示
+                mCameraSource!!.start(holder)
+            }
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     /**
@@ -135,7 +131,6 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
      * ${inheritDoc}
      */
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-
     }
 
     /**
@@ -152,7 +147,9 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
     private inner class BarcodeProcessorFactory : MultiProcessor.Factory<Barcode> {
 
         /**
-         * トースタを作成
+         * Trackerを作成
+         * @param barcode
+         * @return BarcodeTracker
          * ${inheritDoc}
          */
         override fun create(barcode: Barcode): Tracker<Barcode> {
@@ -166,7 +163,9 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
     private inner class BarcodeTracker : Tracker<Barcode>() {
 
         /**
-         * トースタを作成
+         * バーコードの読み込みを行う
+         * @param id
+         * @param item
          * ${inheritDoc}
          */
         override fun onNewItem(id: Int, item: Barcode) {
@@ -194,11 +193,13 @@ class BarcodeCameraFragment : Fragment(), SurfaceHolder.Callback {
                         } else {
                             isbn10 = isbn10.plus(String.format("%d", checkdigit.mod(11)))
                         }
-                        Toast.makeText(activity, "" + id + " : " + isbn10,
-                                Toast.LENGTH_LONG).show()
+                        // Unityの画面に戻る
+                        UnityPlayer.UnitySendMessage("BarcodeScanScreenCanvas", "resultPage", isbn10)
+                        activity.finish()
                     }
                 }
             })
         }
     }
+
 }
