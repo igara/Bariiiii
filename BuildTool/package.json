@@ -1,0 +1,39 @@
+{
+  "name": "bariiii-build-tool",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "electron": "./node_modules/.bin/electron .",
+    "tsc": "./node_modules/.bin/tsc main.ts --removeComments",
+    "dev": "./node_modules/.bin/webpack --watch --config webpack.dev.config.js",
+    "prod": "./node_modules/.bin/webpack --config webpack.prod.config.js && npm run tsc",
+    "mac": "./node_modules/.bin/electron-packager . BuildTool --platform=darwin --arch=x64 --overwrite",
+    "win": "./node_modules/.bin/electron-packager . BuildTool --platform=win32 --arch=x64 --overwrite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/electron": "^1.3.20",
+    "@types/node": "^6.0.38",
+    "@types/onsenui": "0.0.27",
+    "@types/react": "^0.14.34",
+    "@types/react-dom": "^0.14.16",
+    "css-loader": "^0.25.0",
+    "electron-prebuilt": "^1.4.0",
+    "file-loader": "^0.9.0",
+    "onsenui": "^2.0.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-onsenui": "^1.0.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "tslib": "^1.0.0",
+    "typescript": "^2.1.0-dev.20160918",
+    "uglify-save-license": "^0.4.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  }
+}

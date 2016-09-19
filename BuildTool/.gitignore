@@ -1,0 +1,5 @@
+node_modules
+.vscode
+npm-debug.log
+BuildTool-darwin-x64
+dist
