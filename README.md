@@ -1,28 +1,20 @@
 # Bariiiii バリー
 
 
-## What is this?　これは何？
+## これは何？
 
-This is Barcode Reader App.  
 これはバーコードを読み込むアプリです。  
-
-The App is creating by Unity, so Multi PlatForm!  
-（It Will be ...）  
 
 このアプリはUnityによって作られているので、マルチプラットフォームです。  
 (そうなるつもり)  
 
-Target ターゲット  
+現在は本のバーコードを読み込む機能が実装されています。  
+
+## ターゲット  
 :iphone: iOS and Android.  
 OS Ver...  
 
-## Usage （使い方）
-
-You have to install .NET Core & Unity, before cloned this Bariiiii Project.  
-このプロジェクトをCloneする前に、.NET CoreとUnityの環境をインストールしなくてはいけません。
-
-[.NET Core](https://www.microsoft.com/net/core)  
-[Unity](https://unity3d.com/jp/get-unity/download)
+## 使い方
 
 ```
 
@@ -33,15 +25,28 @@ sh setup.sh
 
 ```
 
-Open Unity This Project, Import VuforiaPackage.  
-Unityでプロジェクトを開き、VuforiaPackageをImportしてください。
+## 使用しているライブラリ
 
-## Using Lib（使用しているライブラリ）
+- iOS  
+[AVFoundation](https://developer.apple.com/reference/avfoundation)
 
-- [Vuforia](https://developer.vuforia.com/)  
-vuforia-unity-5-5-9.unitypackage  
-[Vuforia Download Page](https://developer.vuforia.com/downloads/sdk)
 
-- Nuget  
-[Google.Apis.Sheets.v4 Client Library](https://www.nuget.org/packages/Google.Apis.Sheets.v4/)  
-[ZXing.Net](https://www.nuget.org/packages/ZXing.Net/)  
+- Android  
+[Mobile Vision](https://developers.google.com/vision/)  
+
+##  サブプロジェクト
+
+- [CreateBariiiiiAndroidNativePlugin](https://github.com/igara/Bariiiii/tree/master/CreateBariiiiiAndroidNativePlugin)  
+Android Studioで作成されたプロジェクト  
+カメラによるバーコード読み取りライブラリを作成している  
+このプロジェクトで作成されたものはUnity上でも使えるように  
+[Assets/Plugins/Android](https://github.com/igara/Bariiiii/tree/master/Assets/Plugins/Android)に配置する  
+
+- [CreateBariiiiiIOSNativePlugin](https://github.com/igara/Bariiiii/tree/master/CreateBariiiiiIOSNativePlugin)  
+Xcodeで作成されたプロジェクト  
+カメラによるバーコード読み取りライブラリを作成している  
+このプロジェクトで作成されたものはUnity上でも使えるように  
+[Assets/Plugins/iOS](https://github.com/igara/Bariiiii/tree/master/Assets/Plugins/iOS)に配置する  
+
+- [BuildTool](https://github.com/igara/Bariiiii/tree/master/BuildTool)
+Android Studio、Xcode、Unityのビルドを管理するツール  
