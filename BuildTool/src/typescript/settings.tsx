@@ -11,9 +11,9 @@ import {Path} from './component/settings/path';
 const ons_style = require("!style!css!ons_css");
 const ons_component_style = require("!style!css!ons_component_css");
 
-export interface IIndexState {}
+export interface ISettingsState {}
 
-export interface IIndexProps {
+export interface ISettingsProps {
     title: any;
     active: any;
     tabbar: any;
@@ -22,7 +22,7 @@ export interface IIndexProps {
 /**
  * Settings
  */
-export class Settings extends React.Component<IIndexProps, IIndexState> {
+export class Settings extends React.Component<ISettingsProps, ISettingsState> {
 
     /**
      * コンストラクタ
