@@ -1,7 +1,7 @@
 var webpack = require("webpack");
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname);
+var BUILD_DIR = path.resolve(__dirname) + "/dist/";
 var APP_DIR = path.resolve(__dirname);
 var config = {
     target: "electron",
@@ -12,12 +12,11 @@ var config = {
     plugins: [],
     entry: {
         // build対象
-        //main:  APP_DIR + "/src/typescript/main.tsx",
-        index: APP_DIR + "/src/typescript/index.tsx"
+        index: [APP_DIR + "/src/typescript/index.tsx"]
     },
     output: {
         // 出力先のディレクトリを指定する
-        path: BUILD_DIR + "/dist/",
+        path: BUILD_DIR,
         // 出力するファイル名
         filename: "[name].js",
     },
@@ -27,7 +26,7 @@ var config = {
         extensions: ['', '.tsx', '.ts', '.js', '.css', '.scss'],
         alias: {
             ons_css: __dirname + "/node_modules/onsenui/css/onsenui.css",
-            ons_component_css: __dirname + "/node_modules/onsenui/css/onsen-css-components.css"
+            ons_component_css: __dirname + "/node_modules/onsenui/css/onsen-css-components-purple-theme.css"
         }
     },
     module: {
@@ -43,11 +42,11 @@ var config = {
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&minetype=application/font-woff"
+                loader: "url-loader"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-                loader: "file-loader" 
+                loader: "url-loader" 
             }
         ],
     },

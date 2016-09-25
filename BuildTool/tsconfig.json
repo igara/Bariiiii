@@ -8,7 +8,11 @@
         "strictNullChecks": false,
         "module": "commonjs",
         "target": "es5",
-        "jsx": "react"
+        "jsx": "react",
+        "paths": {
+            "react-onsenui": ["types/react-onsenui/index.d.ts"]
+        },
+        "baseUrl": "."
     },
     "exclude": [
         "node_modules"

@@ -21,6 +21,7 @@
     "@types/react": "^0.14.34",
     "@types/react-dom": "^0.14.16",
     "css-loader": "^0.25.0",
+    "electron-packager": "^8.0.0",
     "electron-prebuilt": "^1.4.0",
     "file-loader": "^0.9.0",
     "onsenui": "^2.0.0",
