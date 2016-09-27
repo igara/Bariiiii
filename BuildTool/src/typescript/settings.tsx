@@ -7,6 +7,7 @@ const ons = require('onsenui');
 import {Page} from 'react-onsenui';
 import {Header} from './component/settings/header';
 import {Path} from './component/settings/path';
+import {ButtonArea} from './component/settings/buttonarea';
 
 const ons_style = require("!style!css!ons_css");
 const ons_component_style = require("!style!css!ons_component_css");
@@ -48,12 +49,21 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
     }
 
     /**
+     * ボタン部分
+     * @return JSX.Element <ButtonArea></ButtonArea> ボタン部分
+     */
+    private buttonarea() {
+        return <ButtonArea></ButtonArea>
+    }
+
+    /**
      * render
      * @return JSX.Element <Settings></Settings> Settings
      */
     render() {
         return <Page renderToolbar={() => this.header()}>
             {this.path()}
+            {this.buttonarea()}
         </Page>
     }
 }

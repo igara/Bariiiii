@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 const ons = require('onsenui');
 import {List, ListHeader, ListItem, Input} from 'react-onsenui';
+const settings_path_style = require("../../../css/component/settings/_path");
 
 export interface IPathState {}
 
@@ -34,15 +35,26 @@ export class Path extends React.Component<IPathProps, IPathState> {
     private dataSource() {
         return [
             <Input
-              value=""
-              modifier='underbar'
-              float
-              placeholder='Android Project Path' />,
+                className={settings_path_style.path_textarea}
+                id="unity_path"
+                value=""
+                modifier='underbar'
+                float
+                placeholder='Unity Project Path' />,
             <Input
-              value=""
-              modifier='underbar'
-              float
-              placeholder='iOS Project Path' />
+                className={settings_path_style.path_textarea}
+                id="android_path"
+                value=""
+                modifier='underbar'
+                float
+                placeholder='Android Project Path' />,
+            <Input
+                className={settings_path_style.path_textarea}
+                id="ios_path"
+                value=""
+                modifier='underbar'
+                float
+                placeholder='iOS Project Path' />
         ];
     }
 
@@ -62,6 +74,7 @@ export class Path extends React.Component<IPathProps, IPathState> {
      */
     render() {
         return <List
+            className={settings_path_style.path_list}
             renderHeader={() => this.renderHeader()}
             dataSource={this.dataSource()}
             renderRow={(row, index) => this.renderRow(row, index)}

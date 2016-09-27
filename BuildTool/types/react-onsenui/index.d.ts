@@ -10,4 +10,5 @@ declare module 'react-onsenui' {
 	export var Input: any;
 	export var Tab: any;
 	export var Index: any;
+	export var Button: any;
 }

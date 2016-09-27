@@ -8,6 +8,7 @@ import {Page} from 'react-onsenui';
 import {Header} from './component/index/header';
 import {Unity} from './component/index/unity';
 import {Android} from './component/index/android';
+import {Console} from './component/index/console';
 import {Footer} from './component/index/footer';
 
 const ons_style = require("!style!css!ons_css");
@@ -59,18 +60,26 @@ export class Index extends React.Component<IIndexProps, IIndexState> {
     }
 
     /**
+     * Console表示箇所
+     * @return JSX.Element <Console></Console> Console
+     */
+    private console() {
+        return <Console></Console>;
+    }
+
+    /**
      * render
      * @return JSX.Element <Index></Index> Index
      */
     render() {
         return <Page renderToolbar={() => this.header()}>
             <div className={index_style.flex_container}>
-                <div className="build-list">
+                <div className={index_style.build_list}>
                     {this.unity()}
                     {this.android()}
                 </div>
-                <div className="build-console">
-                    console
+                <div className={index_style.build_console}>
+                    {this.console()}
                 </div>
             </div>
         </Page>
