@@ -4,14 +4,14 @@ const ons = require('onsenui');
 import {List, ListHeader, ListItem, Input} from 'react-onsenui';
 const settings_path_style = require("../../../css/component/settings/_path");
 
-export interface IPathState {}
+export interface IUnityPathState {}
 
-export interface IPathProps {}
+export interface IUnityPathProps {}
 
 /**
- * Path一覧
+ * UnityPath
  */
-export class Path extends React.Component<IPathProps, IPathState> {
+export class UnityPath extends React.Component<IUnityPathProps, IUnityPathState> {
 
     /**
      * コンストラクタ
@@ -22,15 +22,15 @@ export class Path extends React.Component<IPathProps, IPathState> {
 
     /**
      * renderHeader
-     * @return JSX.Element Path一覧のタイトル文言
+     * @return JSX.Element UnityPath一覧のタイトル文言
      */
     private renderHeader() {
-        return <ListHeader> Path Settings </ListHeader>;
+        return <ListHeader> Unity Path Settings </ListHeader>;
     }
 
     /**
      * dataSource
-     * @return JSX.Element[] Path一覧
+     * @return JSX.Element[] UnityPath一覧
      */
     private dataSource() {
         return [
@@ -40,21 +40,7 @@ export class Path extends React.Component<IPathProps, IPathState> {
                 value=""
                 modifier='underbar'
                 float
-                placeholder='Unity Project Path' />,
-            <Input
-                className={settings_path_style.path_textarea}
-                id="android_path"
-                value=""
-                modifier='underbar'
-                float
-                placeholder='Android Project Path' />,
-            <Input
-                className={settings_path_style.path_textarea}
-                id="ios_path"
-                value=""
-                modifier='underbar'
-                float
-                placeholder='iOS Project Path' />
+                placeholder='Unity Project Path' />
         ];
     }
 
@@ -62,7 +48,7 @@ export class Path extends React.Component<IPathProps, IPathState> {
      * renderRow
      * @param JSX.Element row 該当するリスト項目
      * @param number index リストのindex番号
-     * @return JSX.Element Path一覧の一項目
+     * @return JSX.Element UnityPath一覧の一項目
      */
     private renderRow(row, index) {
         return <ListItem key={index}>{row}</ListItem>
@@ -70,7 +56,7 @@ export class Path extends React.Component<IPathProps, IPathState> {
 
     /**
      * render
-     * @return JSX.Element <Path></Path> Path一覧
+     * @return JSX.Element <UnityPath></UnityPath> UnityPath一覧
      */
     render() {
         return <List

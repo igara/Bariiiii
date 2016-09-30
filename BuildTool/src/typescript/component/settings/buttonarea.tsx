@@ -34,7 +34,7 @@ export class ButtonArea extends React.Component<IButtonProps, IButtonState> {
                 ios: ios.value
             }
         };
-fs.writeFile('path.json', JSON.stringify(data, null, '    '));
+        fs.writeFile('path.json', JSON.stringify(data, null, ''));
     }
 
     /**

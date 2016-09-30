@@ -6,7 +6,9 @@ import * as ReactDOM from 'react-dom';
 const ons = require('onsenui');
 import {Page} from 'react-onsenui';
 import {Header} from './component/settings/header';
-import {Path} from './component/settings/path';
+import {UnityPath} from './component/settings/unity_path';
+import {AndroidPath} from './component/settings/android_path';
+import {IOsPath} from './component/settings/ios_path';
 import {ButtonArea} from './component/settings/buttonarea';
 
 const ons_style = require("!style!css!ons_css");
@@ -41,11 +43,27 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
     }
 
     /**
-     * パス設定入力部分
-     * @return JSX.Element <Path></Path> パス設定入力部分
+     * UnityPath設定入力部分
+     * @return JSX.Element <UnityPath></UnityPath> パス設定入力部分
      */
-    private path() {
-        return <Path></Path>
+    private unitypath() {
+        return <UnityPath></UnityPath>
+    }
+
+    /**
+     * AndroidPath設定入力部分
+     * @return JSX.Element <AndroidPath></AndroidPath> パス設定入力部分
+     */
+    private androidpath() {
+        return <AndroidPath></AndroidPath>
+    }
+
+    /**
+     * IOsPath設定入力部分
+     * @return JSX.Element <IOsPath></IOsPath> パス設定入力部分
+     */
+    private iospath() {
+        return <IOsPath></IOsPath>
     }
 
     /**
@@ -62,7 +80,9 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      */
     render() {
         return <Page renderToolbar={() => this.header()}>
-            {this.path()}
+            {this.unitypath()}
+            {this.androidpath()}
+            {this.iospath()}
             {this.buttonarea()}
         </Page>
     }
