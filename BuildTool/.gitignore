@@ -3,3 +3,4 @@ node_modules
 npm-debug.log
 BuildTool-darwin-x64
 dist
+path.json

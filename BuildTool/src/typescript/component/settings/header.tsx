@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ons = require('onsenui');
 import {Toolbar} from 'react-onsenui';
 
 export interface IHeaderState {}

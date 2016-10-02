@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ons = require('onsenui');
 import {List, ListHeader, ListItem} from 'react-onsenui';
 
 export interface IUnityState {}

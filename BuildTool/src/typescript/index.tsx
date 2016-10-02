@@ -3,7 +3,7 @@ const __extends = tslib . __extends;
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ons = require('onsenui');
+require('onsenui');
 import {Page} from 'react-onsenui';
 import {Header} from './component/index/header';
 import {Unity} from './component/index/unity';

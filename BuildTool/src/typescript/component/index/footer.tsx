@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ons = require('onsenui');
 import {Tabbar, TabPage, Tab, Page} from 'react-onsenui';
 
 import {Index} from '../../index';

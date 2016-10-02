@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ons = require('onsenui');
 const index_console_style = require("../../../css/component/index/_console");
 
 export interface IConsoleState {}

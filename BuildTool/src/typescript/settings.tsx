@@ -3,13 +3,13 @@ const __extends = tslib . __extends;
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ons = require('onsenui');
+require('onsenui');
 import {Page} from 'react-onsenui';
 import {Header} from './component/settings/header';
 import {UnityPath} from './component/settings/unity_path';
 import {AndroidPath} from './component/settings/android_path';
 import {IOsPath} from './component/settings/ios_path';
-import {ButtonArea} from './component/settings/buttonarea';
+import {ButtonArea} from './component/settings/button_area';
 
 const ons_style = require("!style!css!ons_css");
 const ons_component_style = require("!style!css!ons_component_css");
@@ -46,7 +46,7 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      * UnityPath設定入力部分
      * @return JSX.Element <UnityPath></UnityPath> パス設定入力部分
      */
-    private unitypath() {
+    private unity_path() {
         return <UnityPath></UnityPath>
     }
 
@@ -54,7 +54,7 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      * AndroidPath設定入力部分
      * @return JSX.Element <AndroidPath></AndroidPath> パス設定入力部分
      */
-    private androidpath() {
+    private android_path() {
         return <AndroidPath></AndroidPath>
     }
 
@@ -62,7 +62,7 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      * IOsPath設定入力部分
      * @return JSX.Element <IOsPath></IOsPath> パス設定入力部分
      */
-    private iospath() {
+    private ios_path() {
         return <IOsPath></IOsPath>
     }
 
@@ -70,7 +70,7 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      * ボタン部分
      * @return JSX.Element <ButtonArea></ButtonArea> ボタン部分
      */
-    private buttonarea() {
+    private button_area() {
         return <ButtonArea></ButtonArea>
     }
 
@@ -80,10 +80,10 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      */
     render() {
         return <Page renderToolbar={() => this.header()}>
-            {this.unitypath()}
-            {this.androidpath()}
-            {this.iospath()}
-            {this.buttonarea()}
+            {this.unity_path()}
+            {this.android_path()}
+            {this.ios_path()}
+            {this.button_area()}
         </Page>
     }
 }
