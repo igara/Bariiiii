@@ -5,7 +5,9 @@ const settings_path_style = require("../../../css/component/settings/_path");
 
 export interface IAndroidPathState {}
 
-export interface IAndroidPathProps {}
+export interface IAndroidPathProps {
+    android_path: any;
+}
 
 /**
  * AndroidPath一覧
@@ -36,7 +38,7 @@ export class AndroidPath extends React.Component<IAndroidPathProps, IAndroidPath
             <Input
                 className={settings_path_style.path_textarea}
                 id="android_path"
-                value=""
+                value={this.props.android_path}
                 modifier='underbar'
                 float
                 placeholder='Android Project Path' />,

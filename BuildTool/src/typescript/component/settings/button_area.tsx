@@ -27,7 +27,7 @@ export class ButtonArea extends React.Component<IButtonAreaProps, IButtonAreaSta
      * @param e: Event
      */
     private onClickSaveButton(event: Event) {
-        this.setState({isOpen: true});
+        this.setState({isOpen: true});   
     }
 
     /**

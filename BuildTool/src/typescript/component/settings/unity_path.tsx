@@ -5,7 +5,9 @@ const settings_path_style = require("../../../css/component/settings/_path");
 
 export interface IUnityPathState {}
 
-export interface IUnityPathProps {}
+export interface IUnityPathProps {
+    unity_path: any;
+}
 
 /**
  * UnityPath
@@ -15,8 +17,8 @@ export class UnityPath extends React.Component<IUnityPathProps, IUnityPathState>
     /**
      * コンストラクタ
      */
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
     }
 
     /**
@@ -36,7 +38,7 @@ export class UnityPath extends React.Component<IUnityPathProps, IUnityPathState>
             <Input
                 className={settings_path_style.path_textarea}
                 id="unity_path"
-                value=""
+                value={this.props.unity_path}
                 modifier='underbar'
                 float
                 placeholder='Unity Project Path' />

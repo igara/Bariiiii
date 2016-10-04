@@ -5,7 +5,9 @@ const settings_path_style = require("../../../css/component/settings/_path");
 
 export interface IIOsParhState {}
 
-export interface IIOsParhProps {}
+export interface IIOsParhProps {
+    ios_path: any;
+}
 
 /**
  * IOSPath一覧
@@ -36,7 +38,7 @@ export class IOsPath extends React.Component<IIOsParhProps, IIOsParhState> {
             <Input
                 className={settings_path_style.path_textarea}
                 id="ios_path"
-                value=""
+                value={this.props.ios_path}
                 modifier='underbar'
                 float
                 placeholder='iOS Project Path' />
