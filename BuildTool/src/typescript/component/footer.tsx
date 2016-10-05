@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Tabbar, TabPage, Tab, Page} from 'react-onsenui';
 
-import {Index} from '../../index';
-import {Settings} from '../../settings';
+import {Home} from './home';
+import {Settings} from './settings';
 
 export interface IFooterState {}
 
@@ -41,8 +41,8 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
     private renderTabs(activeIndex, tabbar) {
         return [
             {
-                content: <Index key="IndexPage" title="Index" active={activeIndex === 0} tabbar={tabbar} />,
-                tab: <Tab key="IndexTab" label="Index" icon="md-home" />
+                content: <Home key="HomePage" title="Home" active={activeIndex === 0} tabbar={tabbar} />,
+                tab: <Tab key="HomeTab" label="Home" icon="md-home" />
             },
             {
                 content: <Settings key="SettingsPage" title="Settings" active={activeIndex === 1} tabbar={tabbar} />,

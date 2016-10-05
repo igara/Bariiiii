@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const index_console_style = require("../../../css/component/index/_console");
+const home_console_style = require("../../../css/component/home/_console");
 
 export interface IConsoleState {}
 
@@ -23,7 +23,7 @@ export class Console extends React.Component<IConsoleProps, IConsoleState> {
      * @return JSX.Element <Android></Android> Androidのビルド一覧
      */
     render() {
-        return <textarea id="console" className={index_console_style.console_textarea} readOnly>
+        return <textarea id="console" className={home_console_style.console_textarea} readOnly>
         </textarea>
     }
 }

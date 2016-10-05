@@ -5,11 +5,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 require('onsenui');
 import {Page} from 'react-onsenui';
-import {Header} from './component/settings/header';
-import {UnityPath} from './component/settings/unity_path';
-import {AndroidPath} from './component/settings/android_path';
-import {IOsPath} from './component/settings/ios_path';
-import {ButtonArea} from './component/settings/button_area';
+import {Header} from './settings/header';
+import {UnityPath} from './settings/unity_path';
+import {AndroidPath} from './settings/android_path';
+import {IOsPath} from './settings/ios_path';
+import {ButtonArea} from './settings/button_area';
 import * as fs from 'fs';
 
 const ons_style = require("!style!css!ons_css");
