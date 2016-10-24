@@ -12,7 +12,7 @@ import {Console} from './home/console';
 
 const ons_style = require("!style!css!ons_css");
 const ons_component_style = require("!style!css!ons_component_css");
-const home_style = require("../../css/_home");
+const home_style = require("../../css/component/_home");
 
 export interface IHomeState {}
 

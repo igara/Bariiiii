@@ -3,7 +3,9 @@ import * as ReactDOM from 'react-dom';
 import {List, ListHeader, ListItem, Input} from 'react-onsenui';
 const settings_path_style = require("../../../css/component/settings/_path");
 
-export interface IUnityPathState {}
+export interface IUnityPathState {
+    unity_path: any;
+}
 
 export interface IUnityPathProps {
     unity_path: any;
@@ -12,13 +14,16 @@ export interface IUnityPathProps {
 /**
  * UnityPath
  */
-export class UnityPath extends React.Component<IUnityPathProps, IUnityPathState> {
+export default class UnityPath extends React.Component<IUnityPathProps, IUnityPathState> {
 
     /**
      * コンストラクタ
      */
     constructor (props) {
         super(props);
+        this.state = {
+            unity_path: ""
+        };
     }
 
     /**

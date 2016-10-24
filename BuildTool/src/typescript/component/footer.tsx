@@ -3,22 +3,29 @@ import * as ReactDOM from 'react-dom';
 import {Tabbar, TabPage, Tab, Page} from 'react-onsenui';
 
 import {Home} from './home';
-import {Settings} from './settings';
+import Settings from './settings';
 
-export interface IFooterState {}
+export interface IFooterState {
+    path: any;
+}
 
-export interface IFooterProps {}
+export interface IFooterProps {
+    path: any;
+}
 
 /**
  * フッターの表示部分
  */
-export class Footer extends React.Component<IFooterProps, IFooterState> {
+export default class Footer extends React.Component<IFooterProps, IFooterState> {
 
     /**
      * コンストラクタ
      */
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
+        this.state = {
+            path: ""
+        };
     }
 
     /**
@@ -45,7 +52,11 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
                 tab: <Tab key="HomeTab" label="Home" icon="md-home" />
             },
             {
-                content: <Settings key="SettingsPage" title="Settings" active={activeIndex === 1} tabbar={tabbar} />,
+                content: <Settings key="SettingsPage"
+                title="Settings"
+                active={activeIndex === 1}
+                tabbar={tabbar}
+                path={this.props.path} />,
                 tab: <Tab key="SettingsTab" label="Settings" icon="md-settings" />
             }
         ];

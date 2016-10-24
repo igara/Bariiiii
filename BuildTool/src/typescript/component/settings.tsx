@@ -6,11 +6,10 @@ import * as ReactDOM from 'react-dom';
 require('onsenui');
 import {Page} from 'react-onsenui';
 import {Header} from './settings/header';
-import {UnityPath} from './settings/unity_path';
+import UnityPath from './settings/unity_path';
 import {AndroidPath} from './settings/android_path';
 import {IOsPath} from './settings/ios_path';
 import {ButtonArea} from './settings/button_area';
-import * as fs from 'fs';
 
 const ons_style = require("!style!css!ons_css");
 const ons_component_style = require("!style!css!ons_component_css");
@@ -25,12 +24,13 @@ export interface ISettingsProps {
     title: any;
     active: any;
     tabbar: any;
+    path: any;
 }
 
 /**
  * Settings
  */
-export class Settings extends React.Component<ISettingsProps, ISettingsState> {
+export default class Settings extends React.Component<ISettingsProps, ISettingsState> {
 
     /**
      * コンストラクタ
@@ -42,29 +42,6 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
             android_path: "",
             ios_path: ""
         };
-    }
-
-    /**
-     * ライフサイクルメソッド
-     * rendorの前に実行される
-     */
-    componentDidMount() {
-        // ファイル読み込み
-        fs.readFile('path.json', 'utf8', (err: NodeJS.ErrnoException, data: Buffer) => {
-            if (err) {
-                // 読み込みに失敗した時
-                console.log(err);
-            }
-            if (data) {
-                // JSONパース
-                var json = JSON.parse(data.toString());
-                super.setState({
-                    unity_path: json.path.unity,
-                    android_path: json.path.android,
-                    ios_path: json.path.ios
-                });
-            }
-        });
     }
 
     /**
@@ -105,6 +82,14 @@ export class Settings extends React.Component<ISettingsProps, ISettingsState> {
      */
     private button_area() {
         return <ButtonArea></ButtonArea>;
+    }
+
+    callSetState(){
+        this.setState({
+            unity_path:this.props.path.unity,
+            android_path:"",
+            ios_path:""
+        });
     }
 
     /**
